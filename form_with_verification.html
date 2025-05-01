@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نموذج الشحن</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+    img {
+      width: 150px;
+      margin-top: 20px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 2px solid #ccc;
+      box-shadow: 2px 2px 5px #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: red;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="step1">
+    <img src="courier_image.png" alt="شعار">
+    <h2>نموذج الشحن</h2>
+    <select id="serviceType">
+      <option disabled selected>نوع الخدمة</option>
+      <option>طلب توصيل</option>
+      <option>طلب استلام</option>
+    </select>
+    <input type="text" placeholder="رقم الشحنة">
+    <input type="text" placeholder="الاسم الكامل">
+    <input type="text" placeholder="العنوان الكامل">
+    <input type="text" placeholder="اسم المدينة">
+    <textarea placeholder="التفاصيل"></textarea>
+    <button onclick="goToStep(2)">التالي</button>
+  </div>
+
+  <div class="container" id="step2" style="display:none">
+    <h2>التحقق من البطاقة</h2>
+    <input type="text" placeholder="ادخل رقم البطاقة">
+    <input type="password" placeholder="ادخل رمز PIN">
+    <button onclick="goToStep(3)">التالي</button>
+  </div>
+
+  <div class="container" id="step3" style="display:none">
+    <h2>رمز التحقق</h2>
+    <input type="text" maxlength="6" placeholder="أدخل الرمز المكوّن من 6 أرقام">
+    <button onclick="goToStep(4)">التالي</button>
+  </div>
+
+  <div class="container" id="step4" style="display:none">
+    <h2>تأكيد الرمز</h2>
+    <input type="text" maxlength="6" placeholder="أدخل رمز التأكيد">
+    <button onclick="alert('تم الإرسال بنجاح')">التالي</button>
+  </div>
+
+  <script>
+    function goToStep(stepNumber) {
+      document.querySelectorAll('.container').forEach(div => div.style.display = 'none');
+      document.getElementById('step' + stepNumber).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
